@@ -2,7 +2,8 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Bot, User, LayoutDashboard, Settings, BarChart3, Calculator, FileText } from 'lucide-react';
+import { User, LayoutDashboard, Settings, BarChart3, Calculator, FileText } from 'lucide-react';
+import { Logo } from '@/components/shared/logo';
 import {
   Sidebar,
   SidebarMenu,
@@ -12,8 +13,6 @@ import {
   SidebarFooter,
   SidebarGroup,
 } from '@/components/ui/sidebar';
-import { cn } from '@/lib/utils';
-import { Button } from '../ui/button';
 
 const menuItems = [
   { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
@@ -34,7 +33,7 @@ export function AppSidebar() {
     <Sidebar>
       <SidebarHeader>
         <Link href="/dashboard" className="flex items-center gap-2">
-          <Bot className="w-8 h-8 text-primary" />
+          <Logo className="w-8 h-8 text-primary" />
           <h1 className="text-xl font-bold font-headline">FiSight</h1>
         </Link>
       </SidebarHeader>

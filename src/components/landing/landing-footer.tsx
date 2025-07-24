@@ -1,12 +1,12 @@
 import Link from 'next/link';
-import { Bot } from 'lucide-react';
+import { Logo } from '@/components/shared/logo';
 
 export function LandingFooter() {
   return (
     <footer className="bg-muted py-12">
       <div className="container flex flex-col md:flex-row items-center justify-between gap-8">
         <div className="flex items-center gap-2">
-          <Bot className="h-7 w-7 text-primary" />
+          <Logo className="h-7 w-7 text-primary" />
           <span className="text-xl font-bold font-headline">FiSight</span>
         </div>
         <nav className="flex flex-wrap justify-center gap-4 md:gap-6 text-sm font-medium">

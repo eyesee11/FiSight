@@ -1,7 +1,8 @@
 'use client';
 
 import Link from 'next/link';
-import { Bot, Menu } from 'lucide-react';
+import { Menu } from 'lucide-react';
+import { Logo } from '@/components/shared/logo';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { ThemeToggle } from '@/components/shared/theme-toggle';
@@ -18,7 +19,7 @@ export function LandingHeader() {
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
-          <Bot className="h-7 w-7 text-primary" />
+          <Logo className="h-7 w-7 text-primary" />
           <span className="text-xl font-bold font-headline">FiSight</span>
         </Link>
         <div className="hidden md:flex items-center gap-6">
@@ -46,7 +47,7 @@ export function LandingHeader() {
                 <SheetContent side="right">
                     <div className="grid gap-6 p-6">
                     <Link href="/" className="flex items-center gap-2">
-                        <Bot className="h-7 w-7 text-primary" />
+                        <Logo className="h-7 w-7 text-primary" />
                         <span className="text-xl font-bold font-headline">FiSight</span>
                     </Link>
                     <nav className="grid gap-4">

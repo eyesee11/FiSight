@@ -1,7 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import { Bot, User, CornerDownLeft, Sparkles, AlertTriangle } from 'lucide-react';
+import { User, CornerDownLeft, Sparkles, AlertTriangle } from 'lucide-react';
+import { Logo } from '@/components/shared/logo';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription, SheetFooter, SheetTrigger } from '@/components/ui/sheet';
 import { Input } from '@/components/ui/input';
@@ -76,7 +77,7 @@ export function ChatWidget() {
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
       <SheetTrigger asChild>
         <Button variant="default" className="fixed bottom-6 right-6 h-14 w-14 rounded-full shadow-lg">
-          <Bot className="h-7 w-7" />
+          <Logo className="h-7 w-7" />
           <span className="sr-only">Open Chat</span>
         </Button>
       </SheetTrigger>
@@ -93,7 +94,7 @@ export function ChatWidget() {
               <div key={message.id} className={`flex items-start gap-3 ${message.role === 'user' ? 'justify-end' : ''}`}>
                 {message.role === 'bot' && (
                   <Avatar className="h-8 w-8">
-                    <AvatarFallback><Bot size={20}/></AvatarFallback>
+                    <AvatarFallback><Logo size={20}/></AvatarFallback>
                   </Avatar>
                 )}
                 <div className={`p-3 rounded-lg max-w-sm ${message.role === 'user' ? 'bg-primary text-primary-foreground' : 'bg-muted'}`}>
@@ -109,7 +110,7 @@ export function ChatWidget() {
             {isLoading && (
               <div className="flex items-start gap-3">
                  <Avatar className="h-8 w-8">
-                    <AvatarFallback><Bot size={20}/></AvatarFallback>
+                    <AvatarFallback><Logo size={20}/></AvatarFallback>
                   </Avatar>
                 <div className="p-3 rounded-lg bg-muted space-y-2">
                   <Skeleton className="h-4 w-48" />
