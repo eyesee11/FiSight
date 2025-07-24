@@ -12,13 +12,14 @@ import {ai} from '@/ai/genkit';
 import {z} from 'genkit';
 
 const SuggestFinancialActionsInputSchema = z.object({
-  financialData: z.string().describe('A consolidated string of the user\'s financial data.'),
+  financialData: z.string().describe("A consolidated string of the user's financial data."),
+  question: z.string().describe("The user's specific question about their finances."),
 });
 export type SuggestFinancialActionsInput = z.infer<typeof SuggestFinancialActionsInputSchema>;
 
 const SuggestFinancialActionsOutputSchema = z.object({
-  suggestedActions: z.array(z.string()).describe('A list of suggested actions to improve the user\'s financial situation.'),
-  rationale: z.string().describe('The rationale behind the suggested actions.'),
+  suggestedActions: z.array(z.string()).describe("A list of suggested actions to improve the user's financial situation based on their question."),
+  rationale: z.string().describe("The rationale behind the suggested actions, directly answering the user's question."),
 });
 export type SuggestFinancialActionsOutput = z.infer<typeof SuggestFinancialActionsOutputSchema>;
 
@@ -30,11 +31,14 @@ const prompt = ai.definePrompt({
   name: 'suggestFinancialActionsPrompt',
   input: {schema: SuggestFinancialActionsInputSchema},
   output: {schema: SuggestFinancialActionsOutputSchema},
-  prompt: `You are a financial advisor. Based on the following financial data, suggest actions the user can take to improve their financial situation.
+  prompt: `You are a financial advisor. Based on the following financial data, answer the user's question and suggest actions the user can take to improve their financial situation.
 
-Financial Data: {{{financialData}}}
+Financial Data:
+{{{financialData}}}
 
-Consider various aspects of financial health, such as savings, debt, investments, and income. Provide clear, actionable suggestions and explain the reasoning behind each suggestion.
+User's Question: {{{question}}}
+
+Consider various aspects of financial health, such as savings, debt, investments, and income. Provide clear, actionable suggestions and explain the reasoning behind each suggestion in the rationale. The rationale should be your primary answer to the user's question.
 
 Output the suggestions as a list of strings in the suggestedActions field and the overall rationale in the rationale field. Be concise.`,
 });

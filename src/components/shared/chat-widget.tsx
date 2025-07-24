@@ -30,12 +30,13 @@ export function ChatWidget() {
 
     const userMessage: Message = { id: Date.now(), role: 'user', content: input };
     setMessages((prev) => [...prev, userMessage]);
+    const currentInput = input;
     setInput('');
     setIsLoading(true);
 
     try {
       const financialData = profileToFinancialSituation(profile);
-      const result = await suggestFinancialActions({ financialData: `${financialData} User question: ${input}` });
+      const result = await suggestFinancialActions({ financialData, question: currentInput });
       
       const botMessageContent = (
         <div className="space-y-4">
