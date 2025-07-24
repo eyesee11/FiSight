@@ -31,6 +31,12 @@ export function AffordabilityAnalyzer() {
     resolver: zodResolver(formSchema),
     defaultValues: {
       purchaseDescription: '',
+      purchaseCost: 0,
+      annualIncome: 0,
+      monthlyExpenses: 0,
+      downPayment: 0,
+      interestRate: 0,
+      loanTerm: 0,
     },
   });
 
