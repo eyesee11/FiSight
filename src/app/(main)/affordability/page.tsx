@@ -1,6 +1,15 @@
 import { PageHeader } from '@/components/shared/page-header';
 import { Calculator } from 'lucide-react';
-import { AffordabilityAnalyzer } from '@/components/affordability/affordability-analyzer';
+import dynamic from 'next/dynamic';
+import { Skeleton } from '@/components/ui/skeleton';
+
+const AffordabilityAnalyzer = dynamic(
+  () => import('@/components/affordability/affordability-analyzer').then(mod => mod.AffordabilityAnalyzer),
+  { 
+    ssr: false,
+    loading: () => <Skeleton className="h-[400px] w-full max-w-2xl mx-auto" /> 
+  }
+);
 
 export default function AffordabilityPage() {
   return (

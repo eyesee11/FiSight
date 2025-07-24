@@ -1,7 +1,18 @@
 import { PageHeader } from '@/components/shared/page-header';
 import { BarChart3 } from 'lucide-react';
-import { PortfolioOverview } from '@/components/investments/portfolio-overview';
-import { RebalancingTool } from '@/components/investments/rebalancing-tool';
+import { Skeleton } from '@/components/ui/skeleton';
+import dynamic from 'next/dynamic';
+
+const PortfolioOverview = dynamic(
+  () => import('@/components/investments/portfolio-overview').then(mod => mod.PortfolioOverview),
+  { ssr: false, loading: () => <Skeleton className="h-[400px] w-full" /> }
+);
+
+const RebalancingTool = dynamic(
+  () => import('@/components/investments/rebalancing-tool').then(mod => mod.RebalancingTool),
+  { ssr: false, loading: () => <Skeleton className="h-[400px] w-full" /> }
+);
+
 
 export default function InvestmentsPage() {
   return (

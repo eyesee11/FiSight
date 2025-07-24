@@ -1,10 +1,24 @@
 import { PageHeader } from '@/components/shared/page-header';
 import { LayoutDashboard } from 'lucide-react';
-import { NetWorthCard } from '@/components/dashboard/net-worth-card';
-import { RecentTransactions } from '@/components/dashboard/recent-transactions';
-import { FinancialHealthSummary } from '@/components/dashboard/financial-health-summary';
 import { Suspense } from 'react';
 import { Skeleton } from '@/components/ui/skeleton';
+import dynamic from 'next/dynamic';
+
+const NetWorthCard = dynamic(
+  () => import('@/components/dashboard/net-worth-card').then(mod => mod.NetWorthCard),
+  { ssr: false, loading: () => <Skeleton className="h-[400px] w-full" /> }
+);
+
+const RecentTransactions = dynamic(
+  () => import('@/components/dashboard/recent-transactions').then(mod => mod.RecentTransactions),
+  { ssr: false, loading: () => <Skeleton className="h-[400px] w-full" /> }
+);
+
+const FinancialHealthSummary = dynamic(
+  () => import('@/components/dashboard/financial-health-summary').then(mod => mod.FinancialHealthSummary),
+  { ssr: false, loading: () => <Skeleton className="h-[300px] w-full" /> }
+);
+
 
 export default function DashboardPage() {
   return (
