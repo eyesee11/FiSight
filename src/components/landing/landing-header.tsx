@@ -31,7 +31,7 @@ export function LandingHeader() {
           </nav>
           <ThemeToggle />
           <Button asChild>
-            <Link href="/dashboard">Get Started</Link>
+            <Link href="/login">Get Started</Link>
           </Button>
         </div>
         <div className="md:hidden flex items-center gap-2">
@@ -57,7 +57,7 @@ export function LandingHeader() {
                         ))}
                     </nav>
                      <Button asChild>
-                        <Link href="/dashboard">Get Started</Link>
+                        <Link href="/login">Get Started</Link>
                     </Button>
                     </div>
                 </SheetContent>

@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Bot, Calculator, Coins, FileText, LayoutDashboard, Settings, BarChart3 } from 'lucide-react';
+import { Bot, User, LayoutDashboard, Settings, BarChart3, Calculator, FileText } from 'lucide-react';
 import {
   Sidebar,
   SidebarMenu,
@@ -21,6 +21,11 @@ const menuItems = [
   { href: '/affordability', label: 'Affordability', icon: Calculator },
   { href: '/scenarios', label: 'Scenarios', icon: FileText },
 ];
+
+const bottomMenuItems = [
+    { href: '/profile', label: 'Profile', icon: User },
+    { href: '#', label: 'Settings', icon: Settings },
+]
 
 export function AppSidebar() {
   const pathname = usePathname();
@@ -53,14 +58,16 @@ export function AppSidebar() {
       </SidebarGroup>
       <SidebarFooter>
          <SidebarMenu>
-            <SidebarMenuItem>
-                <SidebarMenuButton asChild tooltip="Settings">
-                    <Link href="#">
-                        <Settings/>
-                        <span>Settings</span>
-                    </Link>
-                </SidebarMenuButton>
-            </SidebarMenuItem>
+            {bottomMenuItems.map((item) => (
+                <SidebarMenuItem key={item.href}>
+                    <SidebarMenuButton asChild tooltip={item.label} isActive={pathname === item.href}>
+                        <Link href={item.href}>
+                            <item.icon/>
+                            <span>{item.label}</span>
+                        </Link>
+                    </SidebarMenuButton>
+                </SidebarMenuItem>
+            ))}
          </SidebarMenu>
       </SidebarFooter>
     </Sidebar>

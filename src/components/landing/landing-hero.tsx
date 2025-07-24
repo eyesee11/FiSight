@@ -14,7 +14,7 @@ export function LandingHero() {
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
           <Button asChild size="lg">
-            <Link href="/dashboard">Explore Your Dashboard</Link>
+            <Link href="/login">Explore Your Dashboard</Link>
           </Button>
           <Button asChild variant="outline" size="lg">
             <Link href="#services">Learn More</Link>

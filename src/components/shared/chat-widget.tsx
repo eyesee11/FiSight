@@ -8,8 +8,8 @@ import { Input } from '@/components/ui/input';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { suggestFinancialActions } from '@/ai/flows/suggest-financial-actions';
-import { mockCurrentFinancialSituation } from '@/lib/mock-data';
 import { Skeleton } from '../ui/skeleton';
+import { useProfile, profileToFinancialSituation } from '@/hooks/use-profile';
 
 interface Message {
   id: number;
@@ -22,6 +22,7 @@ export function ChatWidget() {
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const { profile } = useProfile();
 
   const handleSendMessage = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -33,7 +34,8 @@ export function ChatWidget() {
     setIsLoading(true);
 
     try {
-      const result = await suggestFinancialActions({ financialData: `${mockCurrentFinancialSituation} User question: ${input}` });
+      const financialData = profileToFinancialSituation(profile);
+      const result = await suggestFinancialActions({ financialData: `${financialData} User question: ${input}` });
       
       const botMessageContent = (
         <div className="space-y-4">
