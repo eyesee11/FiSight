@@ -66,4 +66,20 @@
   body {
     @apply bg-background text-foreground;
   }
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Custom fonts for better Hindi/English display */
+  .font-hindi {
+    font-family: 'Noto Sans Devanagari', 'Inter', sans-serif;
+  }
+  
+  .font-headline {
+    font-family: 'Space Grotesk', 'Noto Sans Devanagari', sans-serif;
+  }
+  
+  .font-body {
+    font-family: 'Inter', 'Noto Sans Devanagari', sans-serif;
+  }
 }

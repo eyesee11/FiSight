@@ -1,10 +1,11 @@
 import { LandingHeader } from './landing-header';
 import { LandingHero } from './landing-hero';
-import { ServicesSection } from './services-section';
+import ServicesSection from './services-section';
 import { AboutSection } from './about-section';
 import { FaqSection } from './faq-section';
 import { ContactSection } from './contact-section';
 import { LandingFooter } from './landing-footer';
+import { LandingFinancialChatWidget } from '@/components/shared/landing-financial-chat';
 
 export function LandingPage() {
   return (
@@ -18,6 +19,7 @@ export function LandingPage() {
         <ContactSection />
       </main>
       <LandingFooter />
+      <LandingFinancialChatWidget />
     </div>
   );
 }
