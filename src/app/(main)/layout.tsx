@@ -1,6 +1,7 @@
 'use client';
 
 import { ClientLayoutWrapper } from '@/components/layout/client-layout-wrapper';
+import { ProtectedRoute } from '@/components/auth/protected-route';
 import {
   ProfileContext,
   defaultProfile,
@@ -45,11 +46,12 @@ export default function MainLayout({
 }: {
   children: React.ReactNode;
 }) {
-  // This layout is for the authenticated app experience.
-  // The landing page has its own layout.
+  // This layout is for the authenticated app experience - now protected! 🔒
   return (
-    <ProfileProvider>
-      <ClientLayoutWrapper>{children}</ClientLayoutWrapper>
-    </ProfileProvider>
+    <ProtectedRoute>
+      <ProfileProvider>
+        <ClientLayoutWrapper>{children}</ClientLayoutWrapper>
+      </ProfileProvider>
+    </ProtectedRoute>
   );
 }
